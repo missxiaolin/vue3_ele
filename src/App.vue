@@ -12,4 +12,7 @@ svg {
   width: 1em;
   height: 1em;
 }
+#app, html, body, .el-container,.el-menu {
+  height: 100%;
+}
 </style>
