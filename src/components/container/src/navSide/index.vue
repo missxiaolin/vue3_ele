@@ -24,7 +24,6 @@ let props = defineProps<{
     collapse: boolean
 }>()
 
-console.log(props.collapse)
 </script>
 
 <style lang="scss" scoped>
