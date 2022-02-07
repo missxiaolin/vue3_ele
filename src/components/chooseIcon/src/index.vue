@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class="choose-icon-dialog-body-height">
     <el-button @click="handleClick" type="primary">
         <slot></slot>
     </el-button>
-    <el-dialog :title="title" v-model="dialogVisible">
+     <el-dialog :title="title" v-model="dialogVisible">
         <div class="container">
           <div class="item" v-for="(item, index) in Object.keys(ElIcons)" :key="index">
             <div class="text">
@@ -13,6 +13,7 @@
           </div>
         </div>
     </el-dialog>
+   
   </div>
 </template>
 
@@ -72,4 +73,5 @@ svg {
   width: 2em;
   height: 2em;
 }
+
 </style>
