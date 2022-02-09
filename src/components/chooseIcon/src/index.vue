@@ -1,19 +1,23 @@
 <template>
   <div class="choose-icon-dialog-body-height">
     <el-button @click="handleClick" type="primary">
-        <slot></slot>
+      <slot></slot>
     </el-button>
-     <el-dialog :title="title" v-model="dialogVisible">
-        <div class="container">
-          <div class="item" @click="clickItem(item)" v-for="(item, index) in Object.keys(ElIcons)" :key="index">
-            <div class="text">
-              <component :is='`el-icon-${toLine(item)}`'></component>
-            </div>
-            <div class="icon">{{item}}</div>
+    <el-dialog :title="title" v-model="dialogVisible">
+      <div class="container">
+        <div
+          class="item"
+          @click="clickItem(item)"
+          v-for="(item, index) in Object.keys(ElIcons)"
+          :key="index"
+        >
+          <div class="text">
+            <component :is="`el-icon-${toLine(item)}`"></component>
           </div>
+          <div class="icon">{{ item }}</div>
         </div>
+      </div>
     </el-dialog>
-   
   </div>
 </template>
 
@@ -80,5 +84,4 @@ svg {
   width: 2em;
   height: 2em;
 }
-
 </style>
