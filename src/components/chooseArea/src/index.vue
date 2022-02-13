@@ -75,7 +75,6 @@ watch(() => province.value, val => {
 let selectArea = ref<AreaItem[]>([])
 watch(() => city.value, val => {
     if (val) {
-        console.log(selectCity.value)
         let area = selectCity.value.find(item => item.code === city.value)!.children!
         selectArea.value = area
     }
