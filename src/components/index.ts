@@ -4,13 +4,14 @@ import chooseArea from './chooseArea'
 import chooseIcon from './chooseIcon'
 import trend from './trend'
 import menu from './menu'
-
+import container from './container'
 
 const components: any = [
     chooseArea,
     chooseIcon,
     trend,
-    menu
+    menu,
+    container
 ]
 
 export default {
