@@ -5,26 +5,39 @@
       <div v-else>{{ text }}</div>
     </div>
     <div class="icon">
-      <el-icon-arrowup
+      <component
+        :is="`el-icon-${toLine(upIcon)}`"
         :style="{ color: !reverseColor ? upIconColor : '#52c41a' }"
-        v-if="type == 'up'"
-      ></el-icon-arrowup>
-      <el-icon-arrowdown
+        v-if="type === 'up'"
+      ></component>
+      <component
+        :is="`el-icon-${toLine(downIcon)}`"
         :style="{ color: !reverseColor ? downIconColor : '#f5222d' }"
         v-else
-      ></el-icon-arrowdown>
+      ></component>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref, useSlots, computed } from "vue";
+import { toLine } from '../../../utils'
 
 let props = defineProps({
   // 上升（up）还是下降(down)
   type: {
     type: String,
     default: "up",
+  },
+  // 上升趋势显示的图标
+  upIcon: {
+    type: String,
+    default: 'ArrowUp'
+  },
+  // 下降趋势显示的图标
+  downIcon: {
+    type: String,
+    default: 'ArrowDown'
   },
   // 趋势显示的文字
   text: {
