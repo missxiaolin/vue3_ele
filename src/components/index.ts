@@ -3,11 +3,14 @@ import { App } from 'vue'
 import chooseArea from './chooseArea'
 import chooseIcon from './chooseIcon'
 import trend from './trend'
+import menu from './menu'
+
 
 const components: any = [
     chooseArea,
     chooseIcon,
-    trend
+    trend,
+    menu
 ]
 
 export default {
