@@ -8,6 +8,7 @@ import container from './container'
 import chooseTime from './chooseTime'
 import chooseDate from './chooseDate'
 import notification from './notification'
+import list from './list'
 
 const components: any = [
     chooseArea,
@@ -17,7 +18,8 @@ const components: any = [
     container,
     chooseTime,
     chooseDate,
-    notification
+    notification,
+    list
 ]
 
 export default {
