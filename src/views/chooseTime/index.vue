@@ -1,11 +1,39 @@
 <template>
-    <l-choose-time></l-choose-time>
+  <div>
+    <l-choose-time
+      :startOptions="startOptions"
+      @startChange="startChange"
+      @endChange="endChange"
+    ></l-choose-time>
+  </div>
 </template>
 
-<script lang="ts" setup>
-
+<script lang='ts' setup>
+interface endValue {
+  startTime: string;
+  endTime: string;
+}
+interface dateEndValue {
+  startDate: Date;
+  endDate: Date;
+}
+let startChange = (val: string) => {
+  console.log("startChange", val);
+};
+let endChange = (val: endValue) => {
+  console.log("endChange", val);
+};
+let dateStartChange = (val: Date) => {
+  console.log(val);
+};
+let dateEndChange = (val: dateEndValue) => {
+  console.log(val);
+};
+let startOptions = {
+  // size: 'mini',
+  // clearable: false
+};
 </script>
 
-<style lang="scss" scoped>
-    
+<style lang='scss' scoped>
 </style>
