@@ -6,6 +6,7 @@ import trend from './trend'
 import menu from './menu'
 import container from './container'
 import chooseTime from './chooseTime'
+import chooseDate from './chooseDate'
 
 const components: any = [
     chooseArea,
@@ -13,7 +14,8 @@ const components: any = [
     trend,
     menu,
     container,
-    chooseTime
+    chooseTime,
+    chooseDate
 ]
 
 export default {

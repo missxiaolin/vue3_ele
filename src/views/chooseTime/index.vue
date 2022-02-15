@@ -5,6 +5,14 @@
       @startChange="startChange"
       @endChange="endChange"
     ></l-choose-time>
+    <br />
+    <br />
+    <l-choose-date
+      :disableToday="false"
+      :startOptions="startOptions"
+      @startChange="dateStartChange"
+      @endChange="dateEndChange"
+    ></l-choose-date>
   </div>
 </template>
 
