@@ -10,6 +10,16 @@
         children="d"
       ></l-menu>
     </div>
+    <!-- <div style="flex: 1">
+      <l-infinite-menu
+        :data="data2"
+        defaultActive="2"
+        name="a"
+        index="b"
+        icon="c"
+        children="d"
+      ></l-infinite-menu>
+    </div> -->
   </div>
 </template>
 
@@ -34,6 +44,51 @@ let data1 = [
         a: "导航3-1",
         b: "3-1",
         c: "Document",
+      },
+    ],
+  },
+];
+let data2 = [
+  {
+    a: "导航1",
+    b: "1",
+    c: "Document",
+  },
+  {
+    a: "导航2",
+    b: "2",
+    c: "Document",
+  },
+  {
+    a: "导航3",
+    b: "3",
+    c: "Document",
+    d: [
+      {
+        a: "导航3-1",
+        b: "3-1",
+        c: "Document",
+        d: [
+          {
+            a: "导航3-1-1",
+            b: "3-1-1",
+            c: "Document",
+            d: [
+              {
+                a: "导航3-1-1-1",
+                b: "3-1-1-1",
+                c: "Document",
+                d: [
+                  {
+                    a: "导航3-1-1-1-1",
+                    b: "3-1-1-1-1",
+                    c: "Document",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
       },
     ],
   },
