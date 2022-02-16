@@ -9,6 +9,7 @@ import chooseTime from './chooseTime'
 import chooseDate from './chooseDate'
 import notification from './notification'
 import list from './list'
+import chooseCity from './chooseCity'
 
 const components: any = [
     chooseArea,
@@ -19,7 +20,8 @@ const components: any = [
     chooseTime,
     chooseDate,
     notification,
-    list
+    list,
+    chooseCity
 ]
 
 export default {
