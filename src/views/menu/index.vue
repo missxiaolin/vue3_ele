@@ -10,7 +10,7 @@
         children="d"
       ></l-menu>
     </div>
-    <!-- <div style="flex: 1">
+    <div style="flex: 1">
       <l-infinite-menu
         :data="data2"
         defaultActive="2"
@@ -19,7 +19,7 @@
         icon="c"
         children="d"
       ></l-infinite-menu>
-    </div> -->
+    </div>
   </div>
 </template>
 
