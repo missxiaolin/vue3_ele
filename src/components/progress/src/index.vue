@@ -1,5 +1,7 @@
 <template>
-    <l-progress></l-progress>
+    <div>
+        progress
+    </div>
 </template>
 
 <script lang="ts" setup>
