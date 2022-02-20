@@ -25,37 +25,78 @@
             filterable
             :filter-method="filterMethod"
           >
-            <el-option v-for="item in options" :key="item.id" :label="item.name" :value="item.id"></el-option>
+            <el-option
+              v-for="item in options"
+              :key="item.id"
+              :label="item.name"
+              :value="item.id"
+            ></el-option>
           </el-select>
         </el-col>
       </el-row>
+      <template v-if="radioValue === '按城市'">
+        <div class="city">
+          <!--  <div v-for="(value, key) in cities">{{key}}</div> -->
+          <!-- 字母区域 -->
+          <div
+            class="city-item"
+            @click="clickChat(item)"
+            v-for="(item, index) in Object.keys(cities)"
+            :key="index"
+          >
+            {{ item }}
+          </div>
+          <el-scrollbar max-height="300px">
+            <template v-for="(value, key) in cities" :key="key">
+              <el-row style="margin-bottom: 10px" :id="key">
+                <el-col :span="2">{{ key }}:</el-col>
+                <el-col :span="22" class="city-name">
+                  <div
+                    @click="clickItem(item)"
+                    class="city-name-item"
+                    v-for="(item) in value"
+                    :key="item.id"
+                  >
+                    <div>{{ item.name }}</div>
+                  </div>
+                </el-col>
+              </el-row>
+            </template>
+          </el-scrollbar>
+        </div>
+      </template>
+      <template v-else> </template>
     </div>
   </el-popover>
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue'
-import city from '../lib/city'
-import { City } from './types'
-import province from '../lib/province.json'
+import { ref, onMounted } from "vue";
+import city from "../lib/city";
+import { City } from "./types";
+import province from "../lib/province.json";
 
 // 最终选择的结果
 let result = ref<string>("请选择");
 // 控制弹出层的显示
 let visible = ref<boolean>(false);
 // 单选框的值 按城市还是按省份选择
-let radioValue = ref<string>('按城市')
+let radioValue = ref<string>("按城市");
 // 下拉框的值 搜索下拉框
-let selectValue = ref<string>('')
+let selectValue = ref<string>("");
 // 下拉框显示城市的数据
-let options = ref<City[]>([])
+let options = ref<City[]>([]);
+// 所有的城市数据
+let cities = ref(city.cities);
 
-let changeSelect = (val: number) => {
-
-}
+let changeSelect = (val: number) => {};
 
 // 自定义搜索过滤
-let filterMethod = (val: string) => {
+let filterMethod = (val: string) => {};
+
+let clickChat = (item: string) => {};
+
+let clickItem = (item: City) => {
 
 }
 </script>
