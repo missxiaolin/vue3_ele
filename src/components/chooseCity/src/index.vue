@@ -128,6 +128,7 @@ let provinces = ref(province);
 // 所有的城市数据
 let allCity = ref<City[]>([]);
 
+// 下拉框选择
 let changeSelect = (val: number) => {
   let city = allCity.value.find((item) => item.id === val)!;
   result.value = city.name;
@@ -173,7 +174,13 @@ let clickItem = (item: City) => {
   emits("changeCity", item);
 };
 
-let clickProvince = (item: string) => {};
+let clickProvince = (item: string) => {
+    // 给结果赋值
+  result.value = item
+  // 关闭弹出层
+  visible.value = false
+  emits('changeProvince', item)
+};
 
 onMounted(() => {
   // 获取下拉框的城市数据
