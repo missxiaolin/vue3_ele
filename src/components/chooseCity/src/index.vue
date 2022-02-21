@@ -54,7 +54,7 @@
                   <div
                     @click="clickItem(item)"
                     class="city-name-item"
-                    v-for="(item) in value"
+                    v-for="item in value"
                     :key="item.id"
                   >
                     <div>{{ item.name }}</div>
@@ -65,7 +65,39 @@
           </el-scrollbar>
         </div>
       </template>
-      <template v-else> </template>
+      <template v-else>
+        <div class="province">
+          <div
+            class="province-item"
+            v-for="(item, index) in Object.keys(provinces)"
+            :key="index"
+            @click="clickChat(item)"
+          >
+            {{ item }}
+          </div>
+        </div>
+        <el-scrollbar max-height="300px">
+          <template
+            v-for="(item, index) in Object.values(provinces)"
+            :key="index"
+          >
+            <template v-for="(item1, index1) in item" :key="index1">
+              <el-row style="margin-bottom: 10px" :id="item1.id">
+                <el-col :span="3">{{ item1.name }}:</el-col>
+                <el-col :span="21" class="province-name">
+                  <div
+                    class="province-name-item"
+                    v-for="(item2, index2) in item1.data"
+                    :key="index2"
+                  >
+                    <div @click="clickProvince(item2)">{{ item2 }}</div>
+                  </div>
+                </el-col>
+              </el-row>
+            </template>
+          </template>
+        </el-scrollbar>
+      </template>
     </div>
   </el-popover>
 </template>
@@ -88,6 +120,10 @@ let selectValue = ref<string>("");
 let options = ref<City[]>([]);
 // 所有的城市数据
 let cities = ref(city.cities);
+// 所有省份的数据
+let provinces = ref(province);
+// 所有的城市数据
+let allCity = ref<City[]>([]);
 
 let changeSelect = (val: number) => {};
 
@@ -96,8 +132,10 @@ let filterMethod = (val: string) => {};
 
 let clickChat = (item: string) => {};
 
-let clickItem = (item: City) => {
+let clickItem = (item: City) => {};
 
+let clickProvince = (item: string) => {
+  
 }
 </script>
 
