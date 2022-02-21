@@ -12,6 +12,7 @@ import list from './list'
 import chooseCity from './chooseCity'
 import progress from './progress'
 import calendar from './calendar'
+import form from './form'
 
 const components: any = [
     chooseArea,
@@ -25,7 +26,8 @@ const components: any = [
     list,
     chooseCity,
     progress,
-    calendar
+    calendar,
+    form
 ]
 
 export default {
