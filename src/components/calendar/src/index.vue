@@ -1,6 +1,6 @@
 <template>
     <div>
-        <l-calendar></l-calendar>
+        calendar
     </div>
 </template>
 
