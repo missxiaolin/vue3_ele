@@ -175,11 +175,11 @@ let clickItem = (item: City) => {
 };
 
 let clickProvince = (item: string) => {
-    // 给结果赋值
-  result.value = item
+  // 给结果赋值
+  result.value = item;
   // 关闭弹出层
-  visible.value = false
-  emits('changeProvince', item)
+  visible.value = false;
+  emits("changeProvince", item);
 };
 
 onMounted(() => {
@@ -193,19 +193,22 @@ onMounted(() => {
 <style lang="scss" scoped>
 .result {
   display: flex;
-  align-content: center;
+  align-items: center;
   width: fit-content;
   cursor: pointer;
-  svg {
-    width: 1em;
-    height: 1em;
-  }
 }
 .rotate {
   transform: rotate(180deg);
 }
-
-.content {
+svg {
+  width: 1em;
+  height: 1em;
+  position: relative;
+  top: 2px;
+  margin-left: 4px;
+  transition: all 0.25s linear;
+}
+.container {
   padding: 6px;
 }
 .city,
