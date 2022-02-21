@@ -108,6 +108,9 @@ import city from "../lib/city";
 import { City } from "./types";
 import province from "../lib/province.json";
 
+// 分发事件
+let emits = defineEmits(["changeCity", "changeProvince"]);
+
 // 最终选择的结果
 let result = ref<string>("请选择");
 // 控制弹出层的显示
@@ -125,18 +128,59 @@ let provinces = ref(province);
 // 所有的城市数据
 let allCity = ref<City[]>([]);
 
-let changeSelect = (val: number) => {};
+let changeSelect = (val: number) => {
+  let city = allCity.value.find((item) => item.id === val)!;
+  result.value = city.name;
+  if (radioValue.value === "按城市") {
+    emits("changeCity", city);
+  } else {
+    emits("changeProvince", city.name);
+  }
+};
 
 // 自定义搜索过滤
-let filterMethod = (val: string) => {};
+let filterMethod = (val: string) => {
+  let values = Object.values(cities.value).flat(2);
+  if (val === "") {
+    options.value = values;
+  } else {
+    if (radioValue.value === "按城市") {
+      // 中文和拼音一起过滤
+      options.value = values.filter((item) => {
+        return item.name.includes(val) || item.spell.includes(val);
+      });
+    } else {
+      // 中文过滤
+      options.value = values.filter((item) => {
+        return item.name.includes(val);
+      });
+    }
+  }
+};
 
-let clickChat = (item: string) => {};
+// 点击字母区域
+let clickChat = (item: string) => {
+  let el = document.getElementById(item);
+  if (el) el.scrollIntoView();
+};
 
-let clickItem = (item: City) => {};
+// 点击每个城市
+let clickItem = (item: City) => {
+  // 给结果赋值
+  result.value = item.name;
+  // 关闭弹出层
+  visible.value = false;
+  emits("changeCity", item);
+};
 
-let clickProvince = (item: string) => {
-  
-}
+let clickProvince = (item: string) => {};
+
+onMounted(() => {
+  // 获取下拉框的城市数据
+  let values = Object.values(cities.value).flat(2);
+  allCity.value = values;
+  options.value = values;
+});
 </script>
 
 <style lang="scss" scoped>
