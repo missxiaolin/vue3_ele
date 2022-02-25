@@ -1,6 +1,6 @@
 <template>
     <div>
-        <l-table></l-table>
+        table
     </div>
 </template>
 
