@@ -13,6 +13,7 @@ import chooseCity from './chooseCity'
 import progress from './progress'
 import calendar from './calendar'
 import form from './form'
+import modalForm from './modalForm'
 import table from './table'
 
 const components: any = [
@@ -29,7 +30,8 @@ const components: any = [
     progress,
     calendar,
     form,
-    table
+    table,
+    modalForm
 ]
 
 export default {
