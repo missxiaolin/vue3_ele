@@ -2,7 +2,7 @@
   <div :class="{ 'l-choose-icon-dialog-body-height': isScroll }">
     <el-dialog v-model="dialogVisible" v-bind="$attrs">
       <template #default>
-        <m-form
+        <l-form
           ref="form"
           :options="options"
           label-width="100px"
@@ -20,7 +20,7 @@
           <template #uploadTip>
             <slot name="uploadTip"></slot>
           </template>
-        </m-form>
+        </l-form>
       </template>
       <template #footer>
         <slot name="footer" :form="form"></slot>
