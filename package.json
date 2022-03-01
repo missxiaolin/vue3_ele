@@ -8,6 +8,9 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^0.2.6",
+    "@fullcalendar/core": "^5.10.1",
+    "@fullcalendar/daygrid": "^5.10.1",
+    "@fullcalendar/interaction": "^5.10.1",
     "axios": "^0.26.0",
     "element-plus": "^1.3.0-beta.9",
     "lodash": "^4.17.21",
@@ -16,11 +19,11 @@
     "wangeditor": "^4.7.11"
   },
   "devDependencies": {
-    "@types/mockjs": "^1.0.6",
-    "mockjs": "^1.1.0",
     "@types/lodash": "^4.14.178",
+    "@types/mockjs": "^1.0.6",
     "@vitejs/plugin-vue": "^2.0.0",
     "@vitejs/plugin-vue-jsx": "^1.2.0",
+    "mockjs": "^1.1.0",
     "sass": "^1.49.0",
     "sass-loader": "^12.4.0",
     "typescript": "^4.4.4",
