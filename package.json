@@ -23,6 +23,7 @@
     "@types/mockjs": "^1.0.6",
     "@vitejs/plugin-vue": "^2.0.0",
     "@vitejs/plugin-vue-jsx": "^1.2.0",
+    "fs-extra": "^10.0.1",
     "mockjs": "^1.1.0",
     "sass": "^1.49.0",
     "sass-loader": "^12.4.0",
