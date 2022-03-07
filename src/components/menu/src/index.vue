@@ -43,7 +43,7 @@
   </el-menu>
 </template>
 
-<script lang="ts" setup>
+<script lang='ts' setup>
 import { PropType } from "vue";
 import { toLine } from "../../../utils";
 
@@ -87,7 +87,7 @@ let props = defineProps({
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang='scss' scoped>
 svg {
   margin-right: 4px;
   width: 1em;

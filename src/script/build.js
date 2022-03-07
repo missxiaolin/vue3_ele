@@ -53,8 +53,19 @@ const buildAll = async () => {
  * @param {*} name 
  */
 const buildSingle = async (name) => {
+    console.log(name)
     await build(defineConfig({
-
+        ...baseConfig,
+        build: {
+            rollupOptions,
+            lib: {
+                entry: path.resolve(entryDir, name),
+                name: 'index',
+                fileName: 'index',
+                formats: ['es', 'umd']
+            },
+            outDir: path.resolve(outputDir, name)
+        }
     }))
 }
 
