@@ -8,13 +8,18 @@ const vueJsx = require('@vitejs/plugin-vue-jsx')
 const entryDir = path.resolve(__dirname, '../components')
 const outputDir = path.resolve(__dirname, '../../l-ui')
 
+/**
+ * 基础配置
+ */
 const baseConfig = defineConfig({
     configFile: false,
     publicDir: false,
     plugins: [vue(), vueJsx()]
 })
 
-
+/**
+ * 不打包vue vue-router
+ */
 const rollupOptions = {
     external: ['vue', 'vue-router'],
     output: {
@@ -28,7 +33,7 @@ const rollupOptions = {
  * 全量构建
  */
 const buildAll = async () => {
-    await build({
+    await build(defineConfig({
         ...baseConfig,
         build: {
             rollupOptions,
@@ -40,7 +45,17 @@ const buildAll = async () => {
             },
             outDir: outputDir
         }
-    })
+    }))
+}
+
+/**
+ * 构建单个组件
+ * @param {*} name 
+ */
+const buildSingle = async (name) => {
+    await build(defineConfig({
+
+    }))
 }
 
 /**
@@ -48,6 +63,16 @@ const buildAll = async () => {
  */
 const buildLib = async () => {
     await buildAll()
+    // 获取组件名称组成的数组
+    const components = fs.readdirSync(entryDir).filter(name => {
+        const componentDir = path.resolve(entryDir, name)
+        const isDir = fs.lstatSync(componentDir).isDirectory()
+        return isDir && fs.readdirSync(componentDir).includes('index.ts')
+    })
+    // 循环一个一个组件构建
+    for (const name of components) {
+        await buildSingle(name)
+    }
 }
 
 
