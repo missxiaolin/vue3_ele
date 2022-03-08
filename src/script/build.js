@@ -70,6 +70,26 @@ const buildSingle = async (name) => {
 }
 
 /**
+ * 生成组件的 package.json 文件
+ * @param {*} name 
+ */
+const createPackageJson = (name) => {
+    const fileStr = `{
+    "name": "${name}",
+    "version": "0.0.0",
+    "main": "index.umd.js",
+    "module": "index.es.js",
+    "style": "style.css"
+  }`
+
+    fsExtra.outputFile(
+        path.resolve(outputDir, `${name}/package.json`),
+        fileStr,
+        'utf-8'
+    )
+}
+
+/**
  * 打包
  */
 const buildLib = async () => {
@@ -82,7 +102,11 @@ const buildLib = async () => {
     })
     // 循环一个一个组件构建
     for (const name of components) {
+        // 构建单组件
         await buildSingle(name)
+
+        // 生成组件的 package.json 文件
+        createPackageJson(name)
     }
 }
 
