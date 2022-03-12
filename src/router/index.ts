@@ -59,6 +59,10 @@ const routes: RouteRecordRaw[] = [
             {
                 path: '/table',
                 component: () => import('../views/table/index.vue')
+            },
+            {
+                path: 'login',
+                component: () => import('../views/login/index.vue')
             }
         ]
     },
