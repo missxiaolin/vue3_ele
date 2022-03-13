@@ -17,36 +17,23 @@
           />
         </div>
         <div class="login-plane-form">
-          <el-form  ref="formRef">
+          <el-form ref="formRef">
             <el-form-item prop="user">
-              <el-input
-                placeholder="用户名 / 账号"
-                type="text"
-              ></el-input>
+              <el-input placeholder="用户名 / 账号" type="text"></el-input>
             </el-form-item>
             <el-form-item prop="pass">
-              <el-input
-                placeholder="密码"
-                type="password"
-              ></el-input>
+              <el-input placeholder="密码" type="password"></el-input>
             </el-form-item>
             <div class="login-code-container">
               <el-form-item style="width: 50%" prop="code">
-                <el-input
-                  placeholder="验证码"
-                  type="text"
-                ></el-input>
+                <el-input placeholder="验证码" type="text"></el-input>
               </el-form-item>
             </div>
             <el-form-item prop="autoLogin">
-              <el-checkbox
-                label="自动登陆"
-              ></el-checkbox>
+              <el-checkbox label="自动登陆"></el-checkbox>
             </el-form-item>
           </el-form>
-          <el-button style="width: 100%" type="primary"
-            >登录</el-button
-          >
+          <el-button style="width: 100%" type="primary">登录</el-button>
         </div>
       </div>
     </div>
@@ -55,6 +42,13 @@
 </template>
 
 <script  lang='ts' setup>
+import * as THREE from "three";
+import { GUI } from "three/examples/jsm/libs/dat.gui.module";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import Stats from "three/examples/jsm/libs/stats.module.js";
+import { defineComponent, onMounted, ref, reactive, toRefs, unref } from "vue";
+import _ from "lodash";
+import { ElMessage } from "element-plus";
 </script>
 
 <style lang="scss" scoped>
@@ -71,7 +65,7 @@
     z-index: 9999;
     width: 600px;
     height: 500px;
-    background-image: url("~@/assets/images/login_border.png");
+    background-image: url("../../assets/images/login_border.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     top: 50%;
@@ -152,7 +146,7 @@
     z-index: 9998;
     width: 100%;
     height: 400px;
-    background-image: url("~@/assets/images/ground.png");
+    background-image: url("../../assets/images/ground.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     bottom: 0;
