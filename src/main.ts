@@ -10,6 +10,10 @@ import lUI from './components'
 import router from './router/index'
 import { toLine } from './utils'
 
+import './assets/styles/overall.scss'
+import './assets/styles/color.scss'
+import './assets/styles/resetElement.scss'
+
 const app = createApp(App)
 
 app.use(router).use(ElementPlus).use(lUI)
