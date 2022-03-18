@@ -28,7 +28,7 @@
     />
     <slot></slot>
     <div class="item-box--play" v-if="paused" @click.stop="play">
-      <img src="../assets/icon_4.png" alt="" />
+      <img src="../../../assets/images/icon_4.png" alt="" />
     </div>
     <div class="template-loading" v-if="loading"></div>
     <div class="item-box__progress" @click.stop="">
