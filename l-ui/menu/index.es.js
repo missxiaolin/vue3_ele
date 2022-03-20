@@ -6537,9 +6537,8 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("svg", _hoisted_1, _hoisted_3);
 }
 var zoomOut = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
-var Icons = /* @__PURE__ */ Object.freeze({
+var Icons = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  [Symbol.toStringTag]: "Module",
   AddLocation: addLocation,
   Aim: aim,
   AlarmClock: alarmClock,
@@ -6821,7 +6820,7 @@ var Icons = /* @__PURE__ */ Object.freeze({
   WindPower: windPower,
   ZoomIn: zoomIn,
   ZoomOut: zoomOut
-});
+}, Symbol.toStringTag, { value: "Module" }));
 var index$1 = "";
 function _isSlot(s) {
   return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !isVNode(s);

@@ -6442,9 +6442,8 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("svg", _hoisted_1$3, _hoisted_3$2);
 }
 var zoomOut = /* @__PURE__ */ _export_sfc$2(_sfc_main$4, [["render", _sfc_render$3]]);
-var ElIcons = /* @__PURE__ */ Object.freeze({
+var ElIcons = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  [Symbol.toStringTag]: "Module",
   AddLocation: addLocation,
   Aim: aim,
   AlarmClock: alarmClock,
@@ -6726,7 +6725,7 @@ var ElIcons = /* @__PURE__ */ Object.freeze({
   WindPower: windPower,
   ZoomIn: zoomIn,
   ZoomOut: zoomOut
-});
+}, Symbol.toStringTag, { value: "Module" }));
 const toLine = (value) => {
   return value.replace(/(A-Z)g/, "-$1").toLocaleLowerCase();
 };
