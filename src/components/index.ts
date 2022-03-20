@@ -42,11 +42,11 @@ const components: any = [
 export default {
   // 让这个组件可以通过use的形势使用
   install(app: App) {
+    // 全局注册图标
+    for (let i in Icons) {
+      app.component(`el-icon-${toLine(i)}`, (Icons as any)[i]);
+    }
     components.map((item: any) => {
-      // 全局注册图标
-      for (let i in Icons) {
-        app.component(`el-icon-${toLine(i)}`, (Icons as any)[i]);
-      }
       app.use(item);
     });
   },
