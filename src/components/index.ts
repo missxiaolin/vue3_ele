@@ -16,6 +16,9 @@ import form from './form'
 import modalForm from './modalForm'
 import table from './table'
 
+import '../styles/base.scss'
+import '../styles/ui.scss'
+
 const components: any = [
     chooseArea,
     chooseIcon,
