@@ -1,7 +1,8 @@
 import DefaultTheme from "vitepress/theme";
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
-import lUI from "../../../../src/components";
+// import lUI from "../../../../src/components";
+import lUI from '../../../../l-ui/index.es'
 
 export default {
   ...DefaultTheme,
