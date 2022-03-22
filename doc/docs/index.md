@@ -3,7 +3,7 @@ home: true
 heroText: 基于element-plus二次封装组件
 tagline: 高扩展性的组件库
 actionText: 快速开始
-actionLink: //
+actionLink: /intro/
 features:
     - title: 简介
       details: 所有组件支持全量和按需引用

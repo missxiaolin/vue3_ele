@@ -21,6 +21,31 @@ module.exports = {
                 link: 'https://github.com/missxiaolin/vue3_ele',
                 target: '_blank'
             }
+        ],
+        // 侧边导航
+        sidebar: [
+            {
+                text: '介绍',
+                link: '/intro/'
+            }, {
+                text: '快速上手',
+                link: '/intro/'
+            }, {
+                text: '图标选择器',
+                link: '/intro/'
+            }, {
+                text: '省市区选择',
+                link: '/intro/'
+            }, {
+                text: '趋势标记',
+                link: '/intro/'
+            }, {
+                text: '时间选择',
+                link: '/intro/'
+            }, {
+                text: '通知菜单',
+                link: '/intro/'
+            }
         ]
     }
 }
