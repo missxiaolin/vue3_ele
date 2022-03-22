@@ -32,7 +32,7 @@ module.exports = {
                 link: '/intro/'
             }, {
                 text: '图标选择器',
-                link: '/intro/'
+                link: '/chooseIcon/'
             }, {
                 text: '省市区选择',
                 link: '/intro/'
