@@ -35,7 +35,7 @@ module.exports = {
                 link: '/chooseIcon/'
             }, {
                 text: '省市区选择',
-                link: '/intro/'
+                link: '/chooseCity/'
             }, {
                 text: '趋势标记',
                 link: '/intro/'
