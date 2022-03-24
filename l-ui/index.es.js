@@ -31426,8 +31426,8 @@ function sliceEventStore(eventStore, eventUiBases, framingRange, nextDayThreshol
   var eventUis = compileEventUis(eventStore.defs, eventUiBases);
   for (var defId in eventStore.defs) {
     var def = eventStore.defs[defId];
-    var ui = eventUis[def.defId];
-    if (ui.display === "inverse-background") {
+    var ui2 = eventUis[def.defId];
+    if (ui2.display === "inverse-background") {
       if (def.groupId) {
         inverseBgByGroupId[def.groupId] = [];
         if (!defByGroupId[def.groupId]) {
@@ -31441,21 +31441,21 @@ function sliceEventStore(eventStore, eventUiBases, framingRange, nextDayThreshol
   for (var instanceId in eventStore.instances) {
     var instance = eventStore.instances[instanceId];
     var def = eventStore.defs[instance.defId];
-    var ui = eventUis[def.defId];
+    var ui2 = eventUis[def.defId];
     var origRange = instance.range;
     var normalRange = !def.allDay && nextDayThreshold ? computeVisibleDayRange(origRange, nextDayThreshold) : origRange;
     var slicedRange = intersectRanges(normalRange, framingRange);
     if (slicedRange) {
-      if (ui.display === "inverse-background") {
+      if (ui2.display === "inverse-background") {
         if (def.groupId) {
           inverseBgByGroupId[def.groupId].push(slicedRange);
         } else {
           inverseBgByDefId[instance.defId].push(slicedRange);
         }
-      } else if (ui.display !== "none") {
-        (ui.display === "background" ? bgRanges : fgRanges).push({
+      } else if (ui2.display !== "none") {
+        (ui2.display === "background" ? bgRanges : fgRanges).push({
           def,
-          ui,
+          ui: ui2,
           instance,
           range: slicedRange,
           isStart: normalRange.start && normalRange.start.valueOf() === slicedRange.start.valueOf(),
@@ -31470,10 +31470,10 @@ function sliceEventStore(eventStore, eventUiBases, framingRange, nextDayThreshol
     for (var _i = 0, invertedRanges_1 = invertedRanges; _i < invertedRanges_1.length; _i++) {
       var invertedRange = invertedRanges_1[_i];
       var def = defByGroupId[groupId];
-      var ui = eventUis[def.defId];
+      var ui2 = eventUis[def.defId];
       bgRanges.push({
         def,
-        ui,
+        ui: ui2,
         instance: null,
         range: invertedRange,
         isStart: false,
@@ -31547,11 +31547,11 @@ function buildSegCompareObj(seg) {
 function computeSegDraggable(seg, context) {
   var pluginHooks = context.pluginHooks;
   var transformers = pluginHooks.isDraggableTransformers;
-  var _a2 = seg.eventRange, def = _a2.def, ui = _a2.ui;
-  var val = ui.startEditable;
+  var _a2 = seg.eventRange, def = _a2.def, ui2 = _a2.ui;
+  var val = ui2.startEditable;
   for (var _i = 0, transformers_1 = transformers; _i < transformers_1.length; _i++) {
     var transformer = transformers_1[_i];
-    val = transformer(val, def, ui, context);
+    val = transformer(val, def, ui2, context);
   }
   return val;
 }
@@ -32360,16 +32360,16 @@ var EventApi = function() {
         standardProps: (_a2 = {}, _a2[name] = val, _a2)
       });
     } else if (name in EVENT_UI_REFINERS) {
-      var ui = EVENT_UI_REFINERS[name](val);
+      var ui2 = EVENT_UI_REFINERS[name](val);
       if (name === "color") {
-        ui = { backgroundColor: val, borderColor: val };
+        ui2 = { backgroundColor: val, borderColor: val };
       } else if (name === "editable") {
-        ui = { startEditable: val, durationEditable: val };
+        ui2 = { startEditable: val, durationEditable: val };
       } else {
-        ui = (_b2 = {}, _b2[name] = val, _b2);
+        ui2 = (_b2 = {}, _b2[name] = val, _b2);
       }
       this.mutate({
-        standardProps: { ui }
+        standardProps: { ui: ui2 }
       });
     } else {
       console.warn("Could not set prop '" + name + "'. Use setExtendedProp instead.");
@@ -32730,7 +32730,7 @@ var EventApi = function() {
       settings = {};
     }
     var def = this._def;
-    var ui = def.ui;
+    var ui2 = def.ui;
     var _a2 = this, startStr = _a2.startStr, endStr = _a2.endStr;
     var res = {};
     if (def.title) {
@@ -32751,24 +32751,24 @@ var EventApi = function() {
     if (def.url) {
       res.url = def.url;
     }
-    if (ui.display && ui.display !== "auto") {
-      res.display = ui.display;
+    if (ui2.display && ui2.display !== "auto") {
+      res.display = ui2.display;
     }
-    if (settings.collapseColor && ui.backgroundColor && ui.backgroundColor === ui.borderColor) {
-      res.color = ui.backgroundColor;
+    if (settings.collapseColor && ui2.backgroundColor && ui2.backgroundColor === ui2.borderColor) {
+      res.color = ui2.backgroundColor;
     } else {
-      if (ui.backgroundColor) {
-        res.backgroundColor = ui.backgroundColor;
+      if (ui2.backgroundColor) {
+        res.backgroundColor = ui2.backgroundColor;
       }
-      if (ui.borderColor) {
-        res.borderColor = ui.borderColor;
+      if (ui2.borderColor) {
+        res.borderColor = ui2.borderColor;
       }
     }
-    if (ui.textColor) {
-      res.textColor = ui.textColor;
+    if (ui2.textColor) {
+      res.textColor = ui2.textColor;
     }
-    if (ui.classNames.length) {
-      res.classNames = ui.classNames;
+    if (ui2.classNames.length) {
+      res.classNames = ui2.classNames;
     }
     if (Object.keys(def.extendedProps).length) {
       if (settings.collapseExtendedProps) {
@@ -37592,14 +37592,14 @@ var EventRoot = function(_super) {
     var options = context.options;
     var seg = props.seg;
     var eventRange = seg.eventRange;
-    var ui = eventRange.ui;
+    var ui2 = eventRange.ui;
     var hookProps = {
       event: new EventApi(context, eventRange.def, eventRange.instance),
       view: context.viewApi,
       timeText: props.timeText,
-      textColor: ui.textColor,
-      backgroundColor: ui.backgroundColor,
-      borderColor: ui.borderColor,
+      textColor: ui2.textColor,
+      backgroundColor: ui2.backgroundColor,
+      borderColor: ui2.borderColor,
       isDraggable: !props.disableDragging && computeSegDraggable(seg, context),
       isStartResizable: !props.disableResizing && computeSegStartResizable(seg, context),
       isEndResizable: !props.disableResizing && computeSegEndResizable(seg),
@@ -37613,7 +37613,7 @@ var EventRoot = function(_super) {
       isDragging: Boolean(props.isDragging),
       isResizing: Boolean(props.isResizing)
     };
-    var standardClassNames = getEventClassNames(hookProps).concat(ui.classNames);
+    var standardClassNames = getEventClassNames(hookProps).concat(ui2.classNames);
     return createElement(RenderHook, { hookProps, classNames: options.eventClassNames, content: options.eventContent, defaultContent: props.defaultContent, didMount: options.eventDidMount, willUnmount: options.eventWillUnmount, elRef: this.elRef }, function(rootElRef, customClassNames, innerElRef, innerContent) {
       return props.children(rootElRef, standardClassNames.concat(customClassNames), innerElRef, innerContent, hookProps);
     });
@@ -38190,21 +38190,21 @@ function splitSegsByFirstCol(segs, colCnt) {
   }
   return byCol;
 }
-function splitInteractionByRow(ui, rowCnt) {
+function splitInteractionByRow(ui2, rowCnt) {
   var byRow = [];
-  if (!ui) {
+  if (!ui2) {
     for (var i2 = 0; i2 < rowCnt; i2 += 1) {
       byRow[i2] = null;
     }
   } else {
     for (var i2 = 0; i2 < rowCnt; i2 += 1) {
       byRow[i2] = {
-        affectedInstances: ui.affectedInstances,
-        isEvent: ui.isEvent,
+        affectedInstances: ui2.affectedInstances,
+        isEvent: ui2.isEvent,
         segs: []
       };
     }
-    for (var _i = 0, _a2 = ui.segs; _i < _a2.length; _i++) {
+    for (var _i = 0, _a2 = ui2.segs; _i < _a2.length; _i++) {
       var seg = _a2[_i];
       byRow[seg.row].segs.push(seg);
     }
@@ -62036,6 +62036,8 @@ var table = {
     app.component("l-table", table$1);
   }
 };
+var base = "";
+var ui = "";
 const components = [
   chooseArea,
   chooseIcon,
@@ -62055,6 +62057,9 @@ const components = [
 ];
 var index = {
   install(app) {
+    for (let i2 in Icons) {
+      app.component(`el-icon-${toLine(i2)}`, Icons[i2]);
+    }
     components.map((item) => {
       app.use(item);
     });
